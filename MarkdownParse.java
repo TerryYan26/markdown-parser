@@ -21,9 +21,12 @@ public class MarkdownParse {
             int closeParen = markdown.indexOf(")", openParen);
             if(openBracket < 0 || closeBracket < 0 || openParen < 0 || closeParen < 0){
               break;}
+            else{
+            
             toReturn.add(markdown.substring(openParen + 1, closeParen));
             currentIndex = closeParen + 1;
             }
+          }
             
         
             
