@@ -20,8 +20,14 @@ public class MarkdownParse {
             currentIndex = closeParen + 1;
             if(openBracket == -1|| closeBracket ==-1 || openParen ==-1 || closeParen ==-1){
               break;}
+                 //![image] is the image format
+                 if (openBracket != 0 && markdown.charAt(openBracket - 1) == '!') {
+                  currentIndex = closeParen + 1;
+                continue;
         }
-
+        toReturn.add(markdown.substring(openParen + 1, closeParen));
+        currentIndex = closeParen + 1;
+      }
         return toReturn;
     }
 
