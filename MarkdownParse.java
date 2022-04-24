@@ -25,6 +25,11 @@ public class MarkdownParse {
                 currentIndex = closeParen + 1;
               continue;
                }
+                //skip over brackets and parentheses that do not directly touch
+            if (closeBracket != openParen -1) {
+              currentIndex = closeParen + 1;
+              continue;
+          }
       
         toReturn.add(markdown.substring(openParen + 1, closeParen));
         currentIndex = closeParen + 1;
