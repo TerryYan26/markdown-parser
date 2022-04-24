@@ -1,0 +1,8 @@
+[]
+{}
+()
+
+!!!>
+[](https://something.com)
+
+![image]
