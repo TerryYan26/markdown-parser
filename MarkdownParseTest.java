@@ -56,6 +56,9 @@ public class MarkdownParseTest {
     @Test
     public void testTestFile2() {
         links2.add("https://something.com");
+        links2.add("some-thing.html");
+        links2.add("tgr1.com");
+        links2.add("abcd.com");
        
         assertEquals(links2, MarkdownParse.getLinks(content2));
     
@@ -75,5 +78,5 @@ public class MarkdownParseTest {
     
     }
 }
-// javac -cp ".;lib\junit-4.12.jar;lib\hamcrest-core-1.3.jar" MarkdownParseTest.java
-// java -cp ".;lib/junit-4.12.jar;lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore MarkdownParseTest
+// javac -cp ".;lib\junit-4.13.2jar;lib\hamcrest-core-1.3.jar" MarkdownParseTest.java
+// java -cp ".;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore MarkdownParseTest
