@@ -1,5 +1,4 @@
-There is the testing and it including a picture and one link!
 
-[link1](https://something.com)
 
-![image](sample.jpg)
+(link1)(https://something.com)
+(link2)(some-thing.html)
