@@ -1,36 +1,82 @@
-# This is a basic workflow to help you get started with Actions
+import static org.junit.Assert.*;
+import org.junit.*;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
 
-name: CI
+public class MarkdownParseTest {
 
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the main branch
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    private Path fileName1;
+    private String content1;
+    private ArrayList<String> links1;
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+    private Path fileName2;
+    private String content2;
+    private ArrayList<String> links2;
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    private Path fileName3;
+    private String content3;
+    private ArrayList<String> links3;
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+    private Path fileName4;
+    private String content4;
+    private ArrayList<String> links4;
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+    @Before
+    public void setUp() throws IOException {
+        fileName1 = Path.of("test-file.md");
+        content1 = Files.readString(fileName1);
+        links1 = new ArrayList<String>();
+
+        fileName2 = Path.of("testing1.md");
+        content2 = Files.readString(fileName2);
+        links2 = new ArrayList<String>();
+
+        fileName3 = Path.of("testing2.md");
+        content3 = Files.readString(fileName3);
+        links3 = new ArrayList<String>();
+
+        fileName4 = Path.of("testing3.md");
+        content4 = Files.readString(fileName4);
+        links4 = new ArrayList<String>();
+    }
+    @Test
+    public void addition() {
+        assertEquals(2, 1 + 1);
+    }
+    @Test
+    public void testTestFile1() {
+        links1.add("https://something.com");
+        links1.add("some-thing.html");
+        assertEquals(links1, MarkdownParse.getLinks(content1));
+    
+    }
+    @Test
+    public void testTestFile2() {
+        links2.add("https://something.com");
+        links2.add("some-thing.html");
+        links2.add("tgr1.com");
+        links2.add("abcd.com");
+       
+        assertEquals(links2, MarkdownParse.getLinks(content2));
+    
+    }
+    @Test
+    public void testTestFile3() {
+        links3.add("https://something.com");
+       
+        assertEquals(links3, MarkdownParse.getLinks(content3));
+    
+    }
+    @Test
+    public void testTestFile4() {
+     
+       
+        assertEquals(links4, MarkdownParse.getLinks(content1));
+    
+    }
+}
+// javac -cp ".;lib\junit-4.13.2jar;lib\hamcrest-core-1.3.jar" MarkdownParseTest.java
+// java -cp ".;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore MarkdownParseTest
