@@ -74,7 +74,7 @@ public class MarkdownParseTest {
     public void testTestFile4() {
      
        
-        assertEquals(links4, MarkdownParse.getLinks(content1));
+        assertEquals(links4, MarkdownParse.getLinks(content4));
     
     }
 }
