@@ -23,6 +23,9 @@ public class MarkdownParseTest {
     private String content4;
     private ArrayList<String> links4;
 
+    private Path fileName5;
+    private String content5;
+    private ArrayList<String> links5;
 
     @Before
     public void setUp() throws IOException {
@@ -41,6 +44,11 @@ public class MarkdownParseTest {
         fileName4 = Path.of("testing3.md");
         content4 = Files.readString(fileName4);
         links4 = new ArrayList<String>();
+
+        fileName5 = Path.of("test-file2.md");
+        content5 = Files.readString(fileName5);
+        links5 = new ArrayList<String>();
+
     }
     @Test
     public void addition() {
@@ -76,6 +84,10 @@ public class MarkdownParseTest {
        
         assertEquals(links4, MarkdownParse.getLinks(content4));
     
+    }
+    @Test
+    public void testTestfile5(){
+        assertEquals(links5, MarkdownParse.getLinks(content5));
     }
 }
 // javac -cp ".;lib\junit-4.13.2jar;lib\hamcrest-core-1.3.jar" MarkdownParseTest.java
